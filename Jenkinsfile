@@ -1,7 +1,7 @@
 node() {
     def pyrdf_docker
     stage ("Get image") {
-        git 'http://localhost:3000/Vetch/DockerStage2Test'
+        git 'http://localhost:3000/Vetch/RunWIthSecond'
     }
     stage("Build base"){
         docker.build("root_img","--network='host' BaseROOT")
