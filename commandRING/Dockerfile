@@ -8,7 +8,8 @@ RUN pip install --upgrade pip && \
     pip install pyspark --no-cache-dir
     
 RUN curl https://raw.githubusercontent.com/JavierCVilla/PyRDF/master/tutorials/local/sequential/df001_introduction.py > ${roothome}/PyRDF/introduction.py
-RUN curl -L https://releases.hashicorp.com/terraform/0.12.23/terraform_0.12.23_linux_amd64.zip > /usr/bin/terraform
+RUN curl -L https://releases.hashicorp.com/terraform/0.12.23/terraform_0.12.23_linux_amd64.zip >terraform.zip
+RUN unzip terraform.zip -d /usr/bin/terraform
 RUN chmod +x /usr/bin/terraform
 RUN terraform init
 RUN echo "#main.tf" > main.tf
