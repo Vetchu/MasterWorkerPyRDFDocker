@@ -1,0 +1,14 @@
+FROM root_img:latest
+RUN yum install -y epel-release && yum install -y python-pip pandoc
+
+RUN git clone https://github.com/JavierCVilla/PyRDF ${roothome}/PyRDF
+RUN pip install --upgrade pip && \
+    pip install wheel && \
+    pip install -r ${roothome}/PyRDF/requirements.txt && \
+    pip install pyspark --no-cache-dir
+    
+RUN curl https://raw.githubusercontent.com/JavierCVilla/PyRDF/master/tutorials/local/sequential/df001_introduction.py > ${roothome}/PyRDF/introduction.py
+RUN curl -L https://releases.hashicorp.com/terraform/0.12.23/terraform_0.12.23_linux_amd64.zip > /usr/bin/terraform
+RUN terraform init
+RUN terraform apply -auto-approve
+CMD . ${roothome}/bin/thisroot.sh && python2 ${roothome}/PyRDF/introduction.py
