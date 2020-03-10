@@ -7,7 +7,7 @@ node() {
         docker.build("root_img","--network='host' BaseROOT")
     }
     stage("Build pyrdf"){
-        pyrdf_docker = docker.build("pyrdf","--network='host' commandRING")
+        pyrdf_docker = docker.build("pyrdf_terraform","--network='host' commandRING")
     }
     stage("Run image"){
         pyrdf_docker.inside{
