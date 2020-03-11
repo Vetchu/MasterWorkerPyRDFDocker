@@ -20,7 +20,6 @@ pipeline {
             }
         }
         stage("build images"){
-            steps{
             parallel{
                 steps{
                 stage("Build command centre"){
@@ -35,7 +34,7 @@ pipeline {
                 }   
                 }
             }
-            }
+            
         }
         stage("Run image"){
             steps{
