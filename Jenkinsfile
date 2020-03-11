@@ -37,7 +37,7 @@ node() {
                     }
                     stage("Run worker"){
                         worker_docker.inside{
-                            sh '. /cern_root/root/bin/thisroot.sh && python2 /cern_root/root/introduction.py'
+                            sh '. /cern_root/root/bin/thisroot.sh && root'
                         }
                     }
                 }   
