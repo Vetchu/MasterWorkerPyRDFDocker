@@ -24,7 +24,7 @@ node() {
                     }
                     stage("Run image"){
 
-                        pyrdf_docker.inside("--network='host' -v /var/run/docker.sock:/var/run/docker.sock")
+                        pyrdf_docker.inside("--privileged=true --network='host' -v /var/run/docker.sock:/var/run/docker.sock")
                         {
                             // sh '. /cern_root/root/bin/thisroot.sh && python2 /cern_root/root/PyRDF/introduction.py'
                             sh 'cd /terraform && terraform init &&  terraform apply -auto-approve'
