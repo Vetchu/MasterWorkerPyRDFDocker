@@ -10,10 +10,10 @@ node() {
     }
     stage("build images")
         parallel{
-            "Build command centre"{
+            stage("Build command centre"){
                 pyrdf_docker = docker.build("pyrdf_terraform","--network='host' commandRING")
             }
-            "Build worker"{
+            stage("Build worker"){
                 worker_docker = docker.build("worker_image","--network='host' WorkerNode")
             }   
         }
