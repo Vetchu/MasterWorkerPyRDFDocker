@@ -24,10 +24,10 @@ node() {
                     }
                     stage("Run image"){
 
-                        pyrdf_docker.inside("--network='host' -v /var/lib/jenkins/.ssh/id_rsa.pub:/home/jenkins/.ssh/id_rsa.pub")
+                        pyrdf_docker.inside("--network='host' -v /var/lib/jenkins/.ssh/id_rsa:/home/jenkins/.ssh/id_rsa")
                         {
                             // sh '. /cern_root/root/bin/thisroot.sh && python2 /cern_root/root/PyRDF/introduction.py'
-                            sh 'cat /home/jenkins/.ssh/id_rsa.pub && cd /terraform && export TF_VAR_pub_key="$(cat /home/jenkins/.ssh/id_rsa.pub)" && terraform init &&  terraform apply -auto-approve'
+                            sh 'cat /home/jenkins/.ssh/id_rsa && cd /terraform && export TF_VAR_pub_key="$(cat /home/jenkins/.ssh/id_rsa)" && terraform init &&  terraform apply -auto-approve'
                         }
                     }                
                 
