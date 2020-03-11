@@ -1,5 +1,5 @@
 node() {
-    stages{
+    
         
         stage ("Get repositories") {
             steps{
@@ -54,5 +54,5 @@ node() {
             }
             }
         }
-    }
+    
 }
