@@ -8,12 +8,17 @@ node() {
     stage("Build base"){
         docker.build("root_img","--network='host' BaseROOT")
     }
-    stage("Build pyrdf"){
-        pyrdf_docker = docker.build("pyrdf_terraform","--network='host' commandRING")
+    stage("build images")
+        parallel{
+            "Build command centre"{
+                pyrdf_docker = docker.build("pyrdf_terraform","--network='host' commandRING")
+            }
+            "Build worker"{
+                worker_docker = docker.build("worker_image","--network='host' WorkerNode")
+            }   
+        }
     }
-    stage("Build worker"){
-        worker_docker = docker.build("worker_image","--network='host' WorkerNode")
-    }    
+ 
     stage("Run image"){
         pyrdf_docker.inside{
             sh '. /cern_root/root/bin/thisroot.sh && python2 /cern_root/root/PyRDF/introduction.py'
