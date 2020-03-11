@@ -1,5 +1,5 @@
 provider "docker" {
-  host = "ssh://vetch@vetchu.tk:22"
+  host = "unix:///var/run/docker.sock"
 }
 
 resource "docker_container" "worker" {
