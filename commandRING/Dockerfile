@@ -20,7 +20,7 @@ ADD main.tf /terraform/main.tf
 RUN chmod 777 /terraform -R
 # COPY /home/vetch/.ssh/id_rsa.pub /terraform
 # RUN export TF_VAR_pub_key="$(cat /terraform/id_rsa.pub)"
-RUN useradd -m -d /home/vetch -r -u 969 vetch && ls /home/vetch
-USER vetch
+RUN useradd -m -d /var/lib/jenkins -r -u 969 jenkins
+USER jenkins
 
 CMD cd /terraform && terraform init &&  terraform apply -auto-approve
