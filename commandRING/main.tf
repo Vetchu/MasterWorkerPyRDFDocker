@@ -4,7 +4,7 @@ provider "docker" {
 
 resource "docker_container" "worker" {
   name  = "sample_worker"
-  image = "${docker_image.worker}"
+  image = "${docker_image.worker.latest}"
 }
 
 resource "docker_image" "worker" {
