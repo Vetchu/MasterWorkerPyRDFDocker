@@ -24,7 +24,7 @@ node() {
                     }
                     stage("Run image"){
 
-                        pyrdf_docker.inside("--network='host' -v /var/lib/jenkins/.ssh/id_rsa:/terraform/key.pub")
+                        pyrdf_docker.inside("--network='host' -v /var/lib/jenkins/.ssh/id_rsa.pub:/home/jenkins/.ssh/id_rsa.pub")
                         {
                             // sh '. /cern_root/root/bin/thisroot.sh && python2 /cern_root/root/PyRDF/introduction.py'
                             sh 'cd /terraform && export TF_VAR_pub_key="$(cat /terraform/key.pub)" && terraform init &&  terraform apply -auto-approve'
