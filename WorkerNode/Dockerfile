@@ -5,4 +5,4 @@ RUN yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x
 RUN yum install -y postgresql12
 RUN curl https://raw.githubusercontent.com/JavierCVilla/PyRDF/master/tutorials/local/sequential/df001_introduction.py > ${roothome}/introduction.py
 
-CMD . ${roothome}/bin/thisroot.sh && python2 ${roothome}/PyRDF/introduction.py
+CMD . ${roothome}/bin/thisroot.sh && root
