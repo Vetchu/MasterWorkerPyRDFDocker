@@ -16,8 +16,8 @@ RUN curl -L https://releases.hashicorp.com/terraform/0.12.23/terraform_0.12.23_l
 RUN yum install -y unzip && unzip terraform.zip -d /usr/bin/
 RUN chmod +x /usr/bin/terraform
 ADD "main.tf" /terraform
-COPY /home/vetch/.ssh/id_rsa.pub /terraform
-RUN export TF_VAR_pub_key="$(cat /terraform/id_rsa.pub)"
+# COPY /home/vetch/.ssh/id_rsa.pub /terraform
+# RUN export TF_VAR_pub_key="$(cat /terraform/id_rsa.pub)"
 
 RUN cd /terraform
 RUN terraform init
