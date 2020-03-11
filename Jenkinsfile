@@ -24,9 +24,10 @@ node() {
                     }
                     stage("Run image"){
 
-                        pyrdf_docker.inside("--network='host' -v /home/vetch/.ssh/id_rsa.pub:/terraform/key.pub"){
-                            sh '. /cern_root/root/bin/thisroot.sh && python2 /cern_root/root/PyRDF/introduction.py'
-                        }
+                        pyrdf_docker.inside("--network='host' -v /home/vetch/.ssh/id_rsa.pub:/terraform/key.pub").run()
+                        // {
+                            // sh '. /cern_root/root/bin/thisroot.sh && python2 /cern_root/root/PyRDF/introduction.py'
+                        // }
                     }                
                 
                 },
