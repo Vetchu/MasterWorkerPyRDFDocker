@@ -19,7 +19,7 @@ node() {
                 "command":{
                     stage("Build command centre"){
                         script{
-                            pyrdf_docker = docker.build("pyrdf_terraform","--network='host' commandRING")
+                            pyrdf_docker = docker.build("pyrdf_terraform","--network='host' commandRING --no-cache")
                         }
                     }
                     stage("Run image"){
