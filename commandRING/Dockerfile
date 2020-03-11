@@ -17,6 +17,7 @@ RUN yum install -y unzip && unzip terraform.zip -d /usr/bin/
 RUN chmod +x /usr/bin/terraform
 RUN mkdir /terraform
 ADD main.tf /terraform/main.tf
+RUN chmod 777 /terraform -R
 # COPY /home/vetch/.ssh/id_rsa.pub /terraform
 # RUN export TF_VAR_pub_key="$(cat /terraform/id_rsa.pub)"
 
