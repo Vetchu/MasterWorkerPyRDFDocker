@@ -1,11 +1,13 @@
 pipeline {
     agent none
-    def pyrdf_docker
-    def worker_docker
+
     stages{
+        
         stage ("Get repositories") {
             steps{
                 script{
+            def pyrdf_docker
+            def worker_docker
             git 'http://localhost:3000/Vetch/RunWIthSecond'
                 }
             }
