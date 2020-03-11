@@ -13,14 +13,13 @@ node() {
             }
             
         }
-
         
-            parallel
+        stage("build images"){
+            parallel(
                 stage("Build command centre"){
                     script{
                         pyrdf_docker = docker.build("pyrdf_terraform","--network='host' commandRING")
                     }
-                    
                 },
                 stage("Build worker"){
                     script{
@@ -28,10 +27,9 @@ node() {
                     }
                     
                 }   
+            )
             
-            
-        
-
+        }
         stage("Run image"){
             script{
             pyrdf_docker.inside{
