@@ -1,10 +1,10 @@
 provider "docker" {
-  host = "ssh://jenkins@145.239.88.134:22"
+  host = "ssh://jenkins@127.0.0.1:22"
 }
 
 resource "docker_container" "worker" {
   name  = "sample_worker"
-  image = "${docker_image.worker.latest}"
+  image = "docker_image.worker.latest"
 }
 
 resource "docker_image" "worker" {
