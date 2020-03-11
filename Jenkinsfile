@@ -22,12 +22,14 @@ pipeline {
         stage("build images"){
             parallel{
                 stage("Build command centre"){
+                    script{
                         pyrdf_docker = docker.build("pyrdf_terraform","--network='host' commandRING")
-                    
+                    }
                 }
                 stage("Build worker"){
+                    script{
                         worker_docker = docker.build("worker_image","--network='host' WorkerNode")
-                    
+                    }
                 }   
             }
             
