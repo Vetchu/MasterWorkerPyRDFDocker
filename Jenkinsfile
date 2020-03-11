@@ -27,7 +27,7 @@ node() {
                         pyrdf_docker.inside("--network='host' -v /etc/passwd:/etc/passwd:ro")
                         {
                             // sh '. /cern_root/root/bin/thisroot.sh && python2 /cern_root/root/PyRDF/introduction.py'
-                            sh 'cat /home/vetch/.ssh/id_rsa.pub && cd /terraform && export TF_VAR_pub_key="$(cat /home/vetch/.ssh/id_rsa.pub)" && terraform init &&  terraform apply -auto-approve'
+                            sh 'cd /terraform && terraform init &&  terraform apply -auto-approve'
                         }
                     }                
                 
