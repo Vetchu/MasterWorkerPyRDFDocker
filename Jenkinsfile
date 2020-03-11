@@ -23,7 +23,8 @@ node() {
                         }
                     }
                     stage("Run image"){
-                        pyrdf_docker.inside{
+
+                        pyrdf_docker.withRun("--network='host'").inside{
                             sh '. /cern_root/root/bin/thisroot.sh && python2 /cern_root/root/PyRDF/introduction.py'
                         }
                     }                
