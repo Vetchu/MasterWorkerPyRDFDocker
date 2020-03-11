@@ -15,8 +15,12 @@ RUN curl https://raw.githubusercontent.com/JavierCVilla/PyRDF/master/tutorials/l
 RUN curl -L https://releases.hashicorp.com/terraform/0.12.23/terraform_0.12.23_linux_amd64.zip >terraform.zip
 RUN yum install -y unzip && unzip terraform.zip -d /usr/bin/
 RUN chmod +x /usr/bin/terraform
+ADD "main.tf" /terraform
+ADD "/home/vetch/.ssh/id_rsa.pub" /terraform
+RUN export TF_VAR_pub_key="$(cat /terraform/id_rsa.pub)"
+
+RUN cd /terraform
 RUN terraform init
-RUN echo "#main.tf" > main.tf
 RUN terraform apply -auto-approve
 
 CMD . ${roothome}/bin/thisroot.sh && python2 ${roothome}/PyRDF/introduction.py
