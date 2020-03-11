@@ -1,5 +1,5 @@
 provider "docker" {
-  host = "ssh://jenkins@127.0.0.1:22"
+  host = "tcp://127.0.0.1:2376/"
 }
 
 resource "docker_container" "worker" {
