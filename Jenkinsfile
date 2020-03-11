@@ -37,7 +37,7 @@ node() {
                     }
                     stage("Run worker"){
                         worker_docker.inside{
-                            sh '. /cern_root/root/bin/thisroot.sh && root'
+                            sh '. /cern_root/root/bin/thisroot.sh && psql --version'
                         }
                     }
                 }   
