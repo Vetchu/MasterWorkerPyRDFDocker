@@ -18,9 +18,5 @@ RUN chmod +x /usr/bin/terraform
 RUN mkdir /terraform
 ADD main.tf /terraform/main.tf
 RUN chmod 777 /terraform -R
-# COPY /home/vetch/.ssh/id_rsa.pub /terraform
-# RUN export TF_VAR_pub_key="$(cat /terraform/id_rsa.pub)"
-# RUN useradd -m -d /home/vetch -r -u 969 vetch
-# USER vetch
 
 CMD cd /terraform && terraform init &&  terraform apply -auto-approve
