@@ -15,7 +15,9 @@ node() {
         stage("Add utils to base"){
             script{
             docker.build("root_utils","--network='host' ROOTutils")
+                mattermostSend color: 'good', message: 'Message from Jenkins Pipeline', text: 'optional for @here mentions and searchable text'
             }
+
         }
 
         stage("build images"){
