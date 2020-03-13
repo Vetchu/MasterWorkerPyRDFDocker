@@ -3,6 +3,7 @@ node() {
                 script{
             def pyrdf_docker
             def worker_docker
+            def currenttime
             git 'http://localhost:3000/Vetch/RunWIthSecond'
                 }
             
@@ -50,6 +51,9 @@ node() {
             {
                             sh '. /cern_root/root/bin/thisroot.sh && python2 /cern_root/root/PyRDF/introduction.py'
             }
-            mattermostSend color: 'good', message: 'Message from Jenkins Pipeline', text: 'optional for @here mentions and searchable text'
+            echo "start: ${currentBuild.startTimeInMillis}"
+            echo "time: ${Util.getTimeSpanString(System.currentTimeMillis())}"
+            def time= ${Util.getTimeSpanString(System.currentTimeMillis())} - ${currentBuild.startTimeInMillis}
+            mattermostSend color: 'good', message: 'Finished main pipeline, duration: '+time, text: 'optional for @here mentions and searchable text'
         }
 }
