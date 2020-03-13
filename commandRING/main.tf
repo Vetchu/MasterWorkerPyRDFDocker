@@ -5,12 +5,8 @@ provider "docker" {
 resource "docker_container" "worker" {
   count = 5
   name  = "${format("sample_worker-%d", count.index)}"
-  image = "${docker_image.worker.latest}"
+  image = "worker_image:latest"
   start = "true"
-}
-
-resource "docker_image" "worker" {
-  name = "worker_image:latest"
 }
 
 resource "random_string" "random" {
