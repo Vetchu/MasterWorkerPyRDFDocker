@@ -14,7 +14,7 @@ node() {
         }
         stage("Add utils to base"){
             script{
-            docker.build("root_utils","--network='host' ROOT_utils")
+            docker.build("root_utils","--network='host' ROOTutils")
             }
         }
 
@@ -34,7 +34,6 @@ node() {
                             sh 'cd /terraform && terraform init &&  terraform apply -auto-approve && terraform destroy -auto-approve'
                         }
                     }                
-                
                 },
                 "worker":{
                     stage("Build worker"){
