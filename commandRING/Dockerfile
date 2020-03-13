@@ -1,4 +1,4 @@
-FROM worker_image:latest
+FROM root_utils:latest
 
 #DOWNLOAD PYRDF AND DEPENDENCIES
 RUN yum install -y epel-release && yum install -y python-pip pandoc

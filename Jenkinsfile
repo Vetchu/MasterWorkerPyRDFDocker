@@ -11,9 +11,13 @@ node() {
             script{
             docker.build("root_img","--network='host' BaseROOT")
             }
-            
         }
-        
+        stage("Add utils to base"){
+            script{
+            docker.build("root_utils","--network='host' ROOT_utils")
+            }
+        }
+
         stage("build images"){
             parallel(
                 "command":{
