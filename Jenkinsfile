@@ -51,6 +51,8 @@ node() {
             {
                             sh '. /cern_root/root/bin/thisroot.sh && python2 /cern_root/root/PyRDF/introduction.py'
             }
-            mattermostSend color: 'good', message: 'Finished main pipeline, duration: '+ "${currentBuild.durationString}", text: 'optional for @here mentions and searchable text'
+            
+            def msg = "${buildStatus}: `${env.JOB_NAME}` #${env.BUILD_NUMBER}:\n${env.BUILD_URL} duration: ${currentBuild.durationString.split(' ')[0]}"
+            mattermostSend color: 'good', message: msg, text: 'optional for @here mentions and searchable text'
         }
 }
