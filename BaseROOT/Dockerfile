@@ -11,7 +11,7 @@ RUN yum install -y git python2 libXft cmake gcc-c++ gcc binutils \
     avahi-compat-libdns_sd-devel libldap-dev python-devel \
     libxml2-devel gsl-static
 
-RUN for dir in ${(tutorials README cmake js icons)[*]}; do \
+RUN for dir in (tutorials README cmake js icons)[*]; do \
         rm -rf ${roothome}/$dir; \
     done
     
