@@ -15,7 +15,6 @@ node() {
         stage("Add utils to base"){
             script{
             docker.build("root_utils","--network='host' ROOTutils")
-                mattermostSend color: 'good', message: 'Message from Jenkins Pipeline', text: 'optional for @here mentions and searchable text'
             }
 
         }
@@ -30,7 +29,7 @@ node() {
                     }
                     stage("Run image"){
 
-                        pyrdf_docker.inside("--privileged=true --network='host' -v /var/run/docker.sock:/var/run/docker.sock")
+                        pyrdf_docker.inside("--network='host' -v /var/run/docker.sock:/var/run/docker.sock")
                         {
                             // sh '. /cern_root/root/bin/thisroot.sh && python2 /cern_root/root/PyRDF/introduction.py'
                             sh 'cd /terraform && terraform init &&  terraform apply -auto-approve && terraform destroy -auto-approve'
@@ -50,6 +49,12 @@ node() {
                     }
                 }   
             )
-            
-        }   
+        }
+        stage("finish up"){
+            pyrdf_docker.inside("--network='host'")
+            {
+                            sh '. /cern_root/root/bin/thisroot.sh && python2 /cern_root/root/PyRDF/introduction.py'
+            }
+            mattermostSend color: 'good', message: 'Message from Jenkins Pipeline', text: 'optional for @here mentions and searchable text'
+        }
 }
