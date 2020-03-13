@@ -51,9 +51,6 @@ node() {
             {
                             sh '. /cern_root/root/bin/thisroot.sh && python2 /cern_root/root/PyRDF/introduction.py'
             }
-            echo "start: ${currentBuild.startTimeInMillis}"
-            echo "time: ${Util.getTimeSpanString(System.currentTimeMillis())}"
-            def time= ${Util.getTimeSpanString(System.currentTimeMillis())} - ${currentBuild.startTimeInMillis}
-            mattermostSend color: 'good', message: 'Finished main pipeline, duration: '+time, text: 'optional for @here mentions and searchable text'
+            mattermostSend color: 'good', message: 'Finished main pipeline, duration: '+${currentBuild.durationString}, text: 'optional for @here mentions and searchable text'
         }
 }
