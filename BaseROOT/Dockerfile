@@ -12,8 +12,8 @@ RUN yum install -y git python2 libXft cmake gcc-c++ gcc binutils \
     libxml2-devel gsl-static
 
 RUN for dir in tutorials README cmake js icons; do \
-        rm -rf ${roothome}/$dir; \
+        rm -rf ${roothome}/${dir}; \
     done 
-    
+RUN ls -la $roothome
 
 CMD . ${roothome}/bin/thisroot.sh && root
